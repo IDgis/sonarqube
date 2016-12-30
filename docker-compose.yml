@@ -1,0 +1,30 @@
+version: '2'
+
+volumes:
+  sq_db_data:
+
+services:
+
+  sonarqube:
+    restart: always
+    image: sonarqube:${SQ_VERSION}
+    environment:
+      SONARQUBE_JDBC_USERNAME: ${SQ_JDBC_USER} 
+      SONARQUBE_JDBC_PASSWORD: ${SQ_JDBC_PASSW} 
+      SONARQUBE_JDBC_URL: ${SQ_JDBC_URL}
+    links:
+      - sonar-postgres:${SQ_PG_HOST}
+    ports:
+      - ${SQ_PORT_EXTERN}:${SQ_PORT_INTERN}
+
+  sonar-postgres:
+    restart: always
+    build: sq-db
+    environment:
+      POSTGRES_USER: ${SQ_JDBC_USER} 
+      POSTGRES_PASSWORD: ${SQ_JDBC_PASSW} 
+    ports:
+      - ${PG_PORT_EXTERN}:${PG_PORT_INTERN}
+    volumes:
+      - sq_db_data:/var/lib/postgresql/data
+
