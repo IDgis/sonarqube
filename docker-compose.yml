@@ -7,7 +7,7 @@ services:
 
   sonarqube:
     restart: always
-    image: sonarqube:5.6
+    image: sonarqube:6.2
     environment:
       SONARQUBE_JDBC_USERNAME: ${SQ_JDBC_USER} 
       SONARQUBE_JDBC_PASSWORD: ${SQ_JDBC_PASSW} 
