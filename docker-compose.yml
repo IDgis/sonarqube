@@ -2,6 +2,7 @@ version: '2'
 
 volumes:
   sq_db_data:
+  sq_data:
 
 services:
 
@@ -16,7 +17,9 @@ services:
       - sonar-postgres
     ports:
       - ${SQ_PORT_EXTERN}:${SQ_PORT_INTERN}
-    
+    volumes:
+      - sq_data:/opt/sonarqube
+      
   sonar-postgres:
     restart: always
     build: sq-db
