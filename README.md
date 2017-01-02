@@ -1,6 +1,10 @@
 # Setup Sonarqube with postgresql
-This guide gives step-by-step instructions to run Sonarqube 6.2 with a postgres 9.5 database.
+This guide gives step-by-step instructions to run Sonarqube 6.2 with a postgres 9.5 database using docker.
 ## Linux
+
+### Prerequisites
+Installed docker (1.12 +) and docker-composer (1.8 +).   
+
 ### Build and run
 #### Clone from git 
 Goto a folder where the git project can be cloned. 
@@ -20,10 +24,11 @@ In a browser connect to the SonarQube admin interface:
 ``http://localhost:9009/``
 
 ##### Apache configuration
-TBD
+An apache configuration will be needed if the installation is done on a linux server to be used company wide.    
+An apache configuration has not been added to this project.
  
 ## Windows 
-
+Using docker-machine.
 ### Prerequisites
 Windows DOS terminal which has the Git bash ``sh`` command available.      
 Installed docker Toolbox.   
