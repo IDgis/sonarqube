@@ -3,6 +3,7 @@ version: '2'
 volumes:
   sq_db_data:
   sq_data:
+  sq_ext:
 
 services:
 
@@ -18,7 +19,8 @@ services:
     ports:
       - ${SQ_PORT_EXTERN}:${SQ_PORT_INTERN}
     volumes:
-      - sq_data:/opt/sonarqube
+      - sq_data:/opt/sonarqube/data
+      - sq_ext:/opt/sonarqube/extensions
       
   sonar-postgres:
     restart: always
