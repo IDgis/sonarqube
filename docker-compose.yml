@@ -7,7 +7,7 @@ services:
 
   sonarqube:
     restart: always
-    image: sonarqube:${SQ_VERSION}
+    image: sonarqube:5.6
     environment:
       SONARQUBE_JDBC_USERNAME: ${SQ_JDBC_USER} 
       SONARQUBE_JDBC_PASSWORD: ${SQ_JDBC_PASSW} 
@@ -20,6 +20,7 @@ services:
   sonar-postgres:
     restart: always
     build: sq-db
+    image: postgres:9.5
     environment:
       POSTGRES_USER: ${SQ_JDBC_USER} 
       POSTGRES_PASSWORD: ${SQ_JDBC_PASSW} 
