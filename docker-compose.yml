@@ -17,7 +17,6 @@ services:
     
   sonar-postgres:
     restart: always
-    image: postgres:${PG_VERSION}
     build: sq-db
     environment:
       POSTGRES_USER: ${SQ_JDBC_USER} 
