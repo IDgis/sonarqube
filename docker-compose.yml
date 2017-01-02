@@ -12,7 +12,7 @@ services:
       SONARQUBE_JDBC_USERNAME: ${SQ_JDBC_USER} 
       SONARQUBE_JDBC_PASSWORD: ${SQ_JDBC_PASSW} 
       SONARQUBE_JDBC_URL: jdbc:postgresql://sonar-postgres:5432/sonar
-    depends-on: sonar-postgres
+    depends_on: sonar-postgres
     
   sonar-postgres:
     restart: always
