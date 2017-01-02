@@ -11,12 +11,9 @@ services:
     environment:
       SONARQUBE_JDBC_USERNAME: ${SQ_JDBC_USER} 
       SONARQUBE_JDBC_PASSWORD: ${SQ_JDBC_PASSW} 
-      SONARQUBE_JDBC_URL: ${SQ_JDBC_URL}
-    links:
-      - sonar-postgres:${SQ_PG_HOST}
-    ports:
-      - ${SQ_PORT_EXTERN}:${SQ_PORT_INTERN}
-
+      SONARQUBE_JDBC_URL: jdbc:postgresql://sonar-postgres:5432/sonar
+    depends-on: sonar-postgres
+    
   sonar-postgres:
     restart: always
     image: postgres:${PG_VERSION}
@@ -24,8 +21,6 @@ services:
     environment:
       POSTGRES_USER: ${SQ_JDBC_USER} 
       POSTGRES_PASSWORD: ${SQ_JDBC_PASSW} 
-    ports:
-      - ${PG_PORT_EXTERN}:${PG_PORT_INTERN}
     volumes:
       - sq_db_data:/var/lib/postgresql/data
 
